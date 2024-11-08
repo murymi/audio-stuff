@@ -213,17 +213,18 @@ fn concatAudioWithFade(input1:[]const u8, input2:[]const u8) !void {
 }
 
 pub fn main() !void {
-    //try changeAudioFormat("song.mp3", "output.wav");
-    //try changeAudioBitrate("song.mp3", "output.mp3", "192k");
-    //try extractAudioFromVideo("goat.mp4", "output.mp3");
-    //try removeAudioFromVideo("goat.mp4", "output1.mp4");
-    //try mergeAudioAndVideo("output1.mp4", "song.mp3", "output.mp4");
+    try changeAudioFormat("song.mp3", "output.wav");
+    try changeAudioBitrate("song.mp3", "output.mp3", "192k");
+    try extractAudioFromVideo("goat.mp4", "output.mp3");
+    try removeAudioFromVideo("goat.mp4", "output1.mp4");
+    try mergeAudioAndVideo("output1.mp4", "song.mp3", "output.mp4");
     try cropAudio("song.mp3", "cropped.mp3", "0:0:0", "0:0:30");
-    //try createSilence("output.mp3", "30");
-    //try concatAudio("output.mp3", "cropped.mp3", "conc.mp3");
-    //try getAudioMetadata("song.mp3");
-    //const d = try getAudioDuration("song.mp3");
-    //std.debug.print("Duration: {d}\n", .{d});
+    try createSilence("output.mp3", "30");
+    try concatAudio("output.mp3", "cropped.mp3", "conc.mp3");
+    try getAudioMetadata("song.mp3");
+    
+    const d = try getAudioDuration("song.mp3");
+    std.debug.print("Duration: {d}\n", .{d});
 
     try concatAudioWithFade("cropped.mp3", "cropped.mp3");
 }
